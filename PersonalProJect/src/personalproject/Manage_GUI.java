@@ -538,11 +538,15 @@ public class Manage_GUI extends javax.swing.JFrame {
     private void btPrintListByTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByTypeActionPerformed
         // TODO add your handling code here:
         String choice = JOptionPane.showInputDialog("Which type do you want to choose? Thit/Cha");
-        deleteTable();
+        try{
         if (choice.equalsIgnoreCase("Thit")) {
+            deleteTable();
             printListByType(0);
         } else {
+            deleteTable();
             printListByType(1);
+        }
+        } catch(NullPointerException ex){
         }
     }//GEN-LAST:event_btPrintListByTypeActionPerformed
 
