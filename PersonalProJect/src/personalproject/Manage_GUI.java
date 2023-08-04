@@ -419,16 +419,13 @@ public class Manage_GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btTotalMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btSortByPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btFindById, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btSortByPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btFindById, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btPrintListByVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -512,7 +509,6 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private boolean deleteById(String id) {
         if (lbm.deleteById(id)) {
-            JOptionPane.showMessageDialog(null, "Delete Successful!");
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Delete Fail, Not Found This Id!");
@@ -612,10 +608,11 @@ public class Manage_GUI extends javax.swing.JFrame {
         while (true) {
             String id = JOptionPane.showInputDialog("Enter Id you want to delete");
             if (deleteById(id)) {
+                btPrintListActionPerformed(evt);
+                JOptionPane.showMessageDialog(null, "Delete Successful!");
                 break;
             }
         }
-        btPrintListActionPerformed(evt);
     }//GEN-LAST:event_btDeleteByIdActionPerformed
 
     private void btDeleteByClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteByClickActionPerformed
@@ -623,9 +620,11 @@ public class Manage_GUI extends javax.swing.JFrame {
         int i = tbBanhMi.getSelectedRow();
         if (i > -1) {
             String id = model.getValueAt(i, 0).toString();
-            deleteById(id);
-        }
-        btPrintListActionPerformed(evt);
+            if (deleteById(id)){
+                btPrintListActionPerformed(evt);
+                JOptionPane.showMessageDialog(null, "Delete Successful!");
+            }
+        } 
     }//GEN-LAST:event_btDeleteByClickActionPerformed
 
     private void btSortByPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPriceActionPerformed

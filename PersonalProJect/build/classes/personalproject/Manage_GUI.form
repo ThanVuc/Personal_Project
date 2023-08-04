@@ -427,19 +427,15 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btTotalMoney" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="btSortByPrice" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="btUpdate" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btUpdate" min="-2" pref="38" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btFindById" min="-2" pref="38" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btVote" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btVote" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="btFindById" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
