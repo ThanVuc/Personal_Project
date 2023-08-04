@@ -62,6 +62,10 @@ public class Manage_GUI extends javax.swing.JFrame {
             });
         }
     }
+    
+    private void deleteTable(){
+            model.setRowCount(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,16 +94,17 @@ public class Manage_GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btAddNew = new javax.swing.JButton();
         btSortByPrice = new javax.swing.JButton();
-        DeleteAll = new javax.swing.JButton();
+        btDeleteAll = new javax.swing.JButton();
         btPrintList = new javax.swing.JButton();
-        DeleteById = new javax.swing.JButton();
+        btDeleteById = new javax.swing.JButton();
         btPrintListByType = new javax.swing.JButton();
         btPrintListByVote = new javax.swing.JButton();
-        deleteByClick = new javax.swing.JButton();
         btUpdate = new javax.swing.JButton();
         btTotalMoney = new javax.swing.JButton();
         btVote = new javax.swing.JButton();
         btFindById = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btDeleteByClick = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -229,15 +234,35 @@ public class Manage_GUI extends javax.swing.JFrame {
 
         btSortByPrice.setBackground(new java.awt.Color(153, 255, 153));
         btSortByPrice.setText("Sort By Price");
+        btSortByPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSortByPriceActionPerformed(evt);
+            }
+        });
 
-        DeleteAll.setBackground(new java.awt.Color(255, 153, 153));
-        DeleteAll.setText("Delete All");
+        btDeleteAll.setBackground(new java.awt.Color(255, 153, 153));
+        btDeleteAll.setText("Delete All");
+        btDeleteAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteAllActionPerformed(evt);
+            }
+        });
 
         btPrintList.setBackground(new java.awt.Color(0, 153, 153));
         btPrintList.setText("Print List");
+        btPrintList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPrintListActionPerformed(evt);
+            }
+        });
 
-        DeleteById.setBackground(new java.awt.Color(255, 153, 153));
-        DeleteById.setText("Delete By Id");
+        btDeleteById.setBackground(new java.awt.Color(255, 153, 153));
+        btDeleteById.setText("Delete By Id");
+        btDeleteById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteByIdActionPerformed(evt);
+            }
+        });
 
         btPrintListByType.setBackground(new java.awt.Color(0, 153, 153));
         btPrintListByType.setText("Print List By Type");
@@ -254,9 +279,6 @@ public class Manage_GUI extends javax.swing.JFrame {
                 btPrintListByVoteActionPerformed(evt);
             }
         });
-
-        deleteByClick.setBackground(new java.awt.Color(255, 153, 153));
-        deleteByClick.setText("Delete By Click");
 
         btUpdate.setBackground(new java.awt.Color(255, 204, 204));
         btUpdate.setText("Update");
@@ -276,51 +298,67 @@ public class Manage_GUI extends javax.swing.JFrame {
         btFindById.setBackground(new java.awt.Color(255, 204, 153));
         btFindById.setText("Find By Id");
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 102));
+        jButton1.setText("Exit");
+
+        btDeleteByClick.setBackground(new java.awt.Color(255, 153, 153));
+        btDeleteByClick.setText("Delete By Click");
+        btDeleteByClick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteByClickActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btSortByPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btAddNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(73, 73, 73)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btTotalMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btPrintList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(75, 75, 75)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                    .addComponent(DeleteAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(93, 93, 93)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btFindById, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DeleteById, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btVote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btPrintListByType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btPrintListByVote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btSortByPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btTotalMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btPrintList, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btDeleteById)
+                            .addComponent(btFindById, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btVote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btDeleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btPrintListByType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btPrintListByVote))
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DeleteById, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteByClick, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btPrintList, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btPrintListByType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btDeleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btDeleteById, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btPrintList, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPrintListByType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -339,7 +377,7 @@ public class Manage_GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btPrintListByVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jLabel2.setText("jLabel2");
@@ -382,7 +420,7 @@ public class Manage_GUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -404,6 +442,15 @@ public class Manage_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbBanhMiActionPerformed
 
+    private void deleteById(String id){
+        if (lbm.deleteById(id)){
+            JOptionPane.showMessageDialog(null, "Delete Successful!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Delete Failm, Not Found Id!");
+        }
+    }
+    
+    
     private void btVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoteActionPerformed
         // TODO add your handling code here:
         if (cbBanhMi.getSelectedIndex() == 0) {
@@ -454,6 +501,46 @@ public class Manage_GUI extends javax.swing.JFrame {
         }       
     }//GEN-LAST:event_btAddNewActionPerformed
 
+    private void btPrintListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListActionPerformed
+        // TODO add your handling code here:
+        deleteTable();
+        for (BanhMi bm : lbm.al) {
+            add1RowInTable(bm);
+        }
+    }//GEN-LAST:event_btPrintListActionPerformed
+
+    private void btDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteAllActionPerformed
+        // TODO add your handling code here:
+        String s= JOptionPane.showInputDialog("Please, Enter 'Confirm' to delete all DataBase and Table");
+        if (s.equalsIgnoreCase("Confirm")){
+            lbm.al.clear();
+            deleteTable();
+        }
+    }//GEN-LAST:event_btDeleteAllActionPerformed
+
+    private void btDeleteByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteByIdActionPerformed
+        // TODO add your handling code here:
+        String id= JOptionPane.showInputDialog("Enter Id you want to delete");
+        deleteById(id);
+        btPrintListActionPerformed(evt);
+    }//GEN-LAST:event_btDeleteByIdActionPerformed
+
+    private void btDeleteByClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteByClickActionPerformed
+        // TODO add your handling code here:
+        int i= tbBanhMi.getSelectedRow();
+        if (i>-1){
+            String id= model.getValueAt(i, 0).toString();
+            deleteById(id);
+        }
+        btPrintListActionPerformed(evt);
+    }//GEN-LAST:event_btDeleteByClickActionPerformed
+
+    private void btSortByPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPriceActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btSortByPriceActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -490,9 +577,10 @@ public class Manage_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DeleteAll;
-    private javax.swing.JButton DeleteById;
     private javax.swing.JButton btAddNew;
+    private javax.swing.JButton btDeleteAll;
+    private javax.swing.JButton btDeleteByClick;
+    private javax.swing.JButton btDeleteById;
     private javax.swing.JButton btFindById;
     private javax.swing.JButton btPrintList;
     private javax.swing.JButton btPrintListByType;
@@ -502,7 +590,7 @@ public class Manage_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btUpdate;
     private javax.swing.JButton btVote;
     private javax.swing.JComboBox<String> cbBanhMi;
-    private javax.swing.JButton deleteByClick;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

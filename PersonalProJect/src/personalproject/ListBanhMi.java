@@ -61,5 +61,19 @@ public class ListBanhMi {
             System.out.println("Write File IO Exception!");
         }
     }
+    
+    public boolean deleteById(String id){
+        for (BanhMi bm : al) {
+            if (id.equalsIgnoreCase(bm.getId())){
+                al.remove(bm);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void sortByPrice(){
+        
+    }
 
 }
