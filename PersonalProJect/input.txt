@@ -1,0 +1,5 @@
+1,100,thit bo,2,coca
+2,101,cha lua,3,3
+1,102,thit heo,pepsi
+2,103,cha bo,1,5
+1,104,thit ga,3,sprite
