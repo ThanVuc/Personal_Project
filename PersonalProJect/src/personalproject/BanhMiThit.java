@@ -21,7 +21,7 @@ public class BanhMiThit extends BanhMi{
 
     @Override
     public String toString() {
-        return super.toString()+"\t"+drink+"\t"+getPrice();
+        return super.toString()+"\t\t"+drink+"\t\t"+getPrice();
     }
 
     @Override

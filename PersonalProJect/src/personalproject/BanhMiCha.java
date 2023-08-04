@@ -22,7 +22,7 @@ public class BanhMiCha extends BanhMi {
 
     @Override
     public String toString() {
-        return super.toString()+coupons+"\t"+getPrice();
+        return super.toString()+"\t\t"+coupons+"\t\t"+getPrice();
     }
 
     @Override

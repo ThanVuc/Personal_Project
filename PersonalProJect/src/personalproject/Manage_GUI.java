@@ -1,8 +1,15 @@
 package personalproject;
 
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import static java.lang.String.valueOf;
 import static java.lang.System.exit;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -64,6 +71,15 @@ public class Manage_GUI extends javax.swing.JFrame {
         model.setRowCount(0);
     }
 
+    private boolean checkId(String id) {
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (id.equals(model.getValueAt(i, 0))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,10 +118,12 @@ public class Manage_GUI extends javax.swing.JFrame {
         btFindById = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
         btDeleteByClick = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
 
         pnInfo.setBackground(new java.awt.Color(102, 102, 102));
         pnInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 153)), "Information Sheet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe Script", 0, 14), new java.awt.Color(255, 51, 102))); // NOI18N
@@ -332,6 +350,15 @@ public class Manage_GUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setForeground(new java.awt.Color(0, 255, 204));
+        jButton1.setText("Write File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -339,7 +366,7 @@ public class Manage_GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btSortByPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -350,7 +377,10 @@ public class Manage_GUI extends javax.swing.JFrame {
                         .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btDeleteById)
@@ -365,13 +395,16 @@ public class Manage_GUI extends javax.swing.JFrame {
                             .addComponent(btPrintListByVote))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btDeleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -404,7 +437,8 @@ public class Manage_GUI extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 2, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 51));
         jLabel8.setText("BANH MI MANAGE PROGRAM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -423,8 +457,8 @@ public class Manage_GUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(314, 314, 314))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(272, 272, 272))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -453,18 +487,18 @@ public class Manage_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void printListByType(int i){
-        if (i==0){
-             for (BanhMi bm : lbm.listByType(0)){
+    private void printListByType(int i) {
+        if (i == 0) {
+            for (BanhMi bm : lbm.listByType(0)) {
                 add1RowInTable(bm);
             }
         } else {
-            for (BanhMi bm : lbm.listByType(1)){
+            for (BanhMi bm : lbm.listByType(1)) {
                 add1RowInTable(bm);
             }
         }
     }
-    
+
     private void cbBanhMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBanhMiActionPerformed
         // TODO add your handling code here:
         if (cbBanhMi.getSelectedIndex() == 0) {
@@ -507,9 +541,9 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btPrintListByTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByTypeActionPerformed
         // TODO add your handling code here:
-        String choice=JOptionPane.showInputDialog("Which type do you want to choose? Thit/Cha");
+        String choice = JOptionPane.showInputDialog("Which type do you want to choose? Thit/Cha");
         deleteTable();
-        if (choice.equalsIgnoreCase("Thit")){
+        if (choice.equalsIgnoreCase("Thit")) {
             printListByType(0);
         } else {
             printListByType(1);
@@ -518,9 +552,7 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btPrintListByVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByVoteActionPerformed
         // TODO add your handling code here:
-        String choice = JOptionPane.showInputDialog(null, "Do you want to print a list with more or less votes ?more/less", "Choice",
-                JOptionPane.DEFAULT_OPTION
-        );
+        String choice = JOptionPane.showInputDialog("Do you want to print a list with more or less votes ?more/less");
         deleteTable();
         if (voteThit > voteCha) {
             if (choice.equalsIgnoreCase("more")) {
@@ -528,28 +560,31 @@ public class Manage_GUI extends javax.swing.JFrame {
             } else {
                 printListByType(1);
             }
-        } else if (voteThit<voteCha) 
-        {
+        } else if (voteThit < voteCha) {
             if (choice.equalsIgnoreCase("more")) {
                 printListByType(1);
             } else {
                 printListByType(0);
             }
-        } else {
+        } else if (voteThit == voteCha) {
             JOptionPane.showMessageDialog(null, "The Number Of Vote 'Thit' equal 'Cha' ");
         }
     }//GEN-LAST:event_btPrintListByVoteActionPerformed
 
     private void btAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddNewActionPerformed
         // TODO add your handling code here:
-        if (cbBanhMi.getSelectedIndex() == 0) {
-            BanhMiThit bmt = new BanhMiThit(txtTmp.getText(), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
-            lbm.addInList(bmt);
-            add1RowInTable(bmt);
+        if (checkId(txtId.getText())) {
+            if (cbBanhMi.getSelectedIndex() == 0) {
+                BanhMiThit bmt = new BanhMiThit(txtTmp.getText(), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+                lbm.addInList(bmt);
+                add1RowInTable(bmt);
+            } else {
+                BanhMiCha bmc = new BanhMiCha(Integer.parseInt(txtTmp.getText()), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+                lbm.addInList(bmc);
+                add1RowInTable(bmc);
+            }
         } else {
-            BanhMiCha bmc = new BanhMiCha(Integer.parseInt(txtTmp.getText()), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
-            lbm.addInList(bmc);
-            add1RowInTable(bmc);
+            JOptionPane.showMessageDialog(null, "Id Illegal");
         }
     }//GEN-LAST:event_btAddNewActionPerformed
 
@@ -577,7 +612,6 @@ public class Manage_GUI extends javax.swing.JFrame {
             if (deleteById(id)) {
                 break;
             }
-
         }
         btPrintListActionPerformed(evt);
     }//GEN-LAST:event_btDeleteByIdActionPerformed
@@ -648,14 +682,14 @@ public class Manage_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 2) {
             int i = tbBanhMi.getSelectedRow();
-            txtId.setText( model.getValueAt(i, 0).toString());
-            txtBreadFilling.setText( model.getValueAt(i, 1).toString());
-            txtSize.setText( model.getValueAt(i, 2).toString());
+            txtId.setText(model.getValueAt(i, 0).toString());
+            txtBreadFilling.setText(model.getValueAt(i, 1).toString());
+            txtSize.setText(model.getValueAt(i, 2).toString());
             if (model.getValueAt(i, 4) == "") {
-                txtTmp.setText( model.getValueAt(i, 3).toString());
+                txtTmp.setText(model.getValueAt(i, 3).toString());
                 cbBanhMi.setSelectedIndex(0);
             } else {
-                txtTmp.setText( model.getValueAt(i, 4).toString());
+                txtTmp.setText(model.getValueAt(i, 4).toString());
                 cbBanhMi.setSelectedIndex(1);
             }
         }
@@ -663,12 +697,28 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
         // TODO add your handling code here:
-        int i= tbBanhMi.getSelectedRow();
+        int i = tbBanhMi.getSelectedRow();
         lbm.deleteById(model.getValueAt(i, 0).toString());
         deleteTable();
         btAddNewActionPerformed(evt);
     }//GEN-LAST:event_btUpdateActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String fileName = JOptionPane.showInputDialog("Enter File Name:");
+        lbm.writeFile(fileName);
+        Path path = Paths.get(fileName);
+        File file = new File("D:\\Learn Back-End\\Java_OOP\\Personal_Project\\PersonalProJect\\" + path);
+        Desktop desktop = Desktop.getDesktop();
+        if (file.exists()) {
+            try {
+                desktop.open(file);
+
+            } catch (IOException ex) {
+                System.out.println("IO Exception when open in Desktop!");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -720,6 +770,7 @@ public class Manage_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btUpdate;
     private javax.swing.JButton btVote;
     private javax.swing.JComboBox<String> cbBanhMi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

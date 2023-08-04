@@ -66,7 +66,7 @@ public class ListBanhMi {
         for (BanhMi bm : al) {
             if (id.equalsIgnoreCase(bm.getId())){
                 al.remove(bm);
-                return true;
+                return true;           
             }
         }
         return false;

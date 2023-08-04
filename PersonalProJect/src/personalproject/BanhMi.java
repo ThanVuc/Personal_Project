@@ -39,7 +39,7 @@ public abstract class BanhMi implements IBanhMi{
 
     @Override
     public String toString() {
-        return id+"\t"+size+"\t"+breadFilling;
+        return id+"\t"+size+"\t"+breadFilling+"     ";
     }
 
     @Override
