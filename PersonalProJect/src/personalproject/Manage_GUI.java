@@ -553,23 +553,23 @@ public class Manage_GUI extends javax.swing.JFrame {
     private void btPrintListByVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByVoteActionPerformed
         // TODO add your handling code here:
         String choice = JOptionPane.showInputDialog("Do you want to print a list with more or less votes ?more/less");
-        if (voteThit > voteCha) {
+        if (choice.equalsIgnoreCase("more")) {
             deleteTable();
-            if (choice.equalsIgnoreCase("more")) {
+            if (voteThit > voteCha) {
                 printListByType(0);
             } else {
                 printListByType(1);
             }
-        } else if (voteThit < voteCha) {
+        } else if (choice.equalsIgnoreCase("less")) {
             deleteTable();
-            if (choice.equalsIgnoreCase("more")) {
+            if (voteThit > voteCha) {
                 printListByType(1);
             } else {
                 printListByType(0);
             }
         }
-        if ((voteCha==voteThit)&&(choice !=null)){
-           JOptionPane.showMessageDialog(null, "Vote BanhMiCha Equal BanhMiThit");
+        if ((voteCha == voteThit) && (choice != null)) {
+            JOptionPane.showMessageDialog(null, "Vote BanhMiCha Equal BanhMiThit");
         }
     }//GEN-LAST:event_btPrintListByVoteActionPerformed
 
