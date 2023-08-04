@@ -73,7 +73,45 @@ public class ListBanhMi {
     }
     
     public void sortByPrice(){
-        
+        int i,j;
+        BanhMi key;
+        for(i=1; i<al.size(); i++){
+            key=al.get(i);
+            j=i-1;
+            while ((j>=0) && (al.get(j).getPrice()>key.getPrice())){
+                al.set(j+1, al.get(j));
+                j-=1;
+            }
+            al.set(j+1, key);
+        }
+    }
+    
+    public BanhMi findById(String id){
+        for (BanhMi banhMi : al) {
+            if (id.equalsIgnoreCase(banhMi.getId())){
+                return banhMi;
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<BanhMi> listByType(int i){
+        ArrayList<BanhMi> tmp= new ArrayList<>();
+        if (i==0){
+            for (BanhMi banhMi : al) {
+                if (banhMi instanceof BanhMiThit){
+                    tmp.add(banhMi);
+                }
+            }
+            return tmp;
+        } else {
+            for (BanhMi banhMi :  al){
+                if (banhMi instanceof BanhMiCha){
+                    tmp.add(banhMi);
+                }
+            }
+            return tmp;
+        }
     }
 
 }

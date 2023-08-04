@@ -2,6 +2,7 @@ package personalproject;
 
 import java.awt.Color;
 import static java.lang.String.valueOf;
+import static java.lang.System.exit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,13 +32,13 @@ public class Manage_GUI extends javax.swing.JFrame {
         tbBanhMi.setModel(model);
     }
 
-    private void readFile(){
+    private void readFile() {
         lbm.readFile("input.txt");
         for (BanhMi bm : lbm.al) {
             add1RowInTable(bm);
         }
     }
-    
+
     private void setDefaultLable() {
         lbTmp.setText("Drink");
     }
@@ -49,18 +50,18 @@ public class Manage_GUI extends javax.swing.JFrame {
     private void add1RowInTable(BanhMi bm) {
         if (bm instanceof BanhMiThit) {
             model.addRow(new Object[]{
-                bm.getId(), bm.getBreadFilling(), bm.getSize(), ((BanhMiThit) bm).getDrink(),"",bm.getPrice()
+                bm.getId(), bm.getBreadFilling(), bm.getSize(), ((BanhMiThit) bm).getDrink(), "", bm.getPrice()
             });
         } else {
-            BanhMiCha bmc= (BanhMiCha) bm;
+            BanhMiCha bmc = (BanhMiCha) bm;
             model.addRow(new Object[]{
-                bmc.getId(),bmc.getBreadFilling(),bmc.getSize(),"",bmc.getCoupons(),bmc.getPrice()
+                bmc.getId(), bmc.getBreadFilling(), bmc.getSize(), "", bmc.getCoupons(), bmc.getPrice()
             });
         }
     }
-    
-    private void deleteTable(){
-            model.setRowCount(0);
+
+    private void deleteTable() {
+        model.setRowCount(0);
     }
 
     /**
@@ -99,7 +100,7 @@ public class Manage_GUI extends javax.swing.JFrame {
         btTotalMoney = new javax.swing.JButton();
         btVote = new javax.swing.JButton();
         btFindById = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btExit = new javax.swing.JButton();
         btDeleteByClick = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -215,6 +216,11 @@ public class Manage_GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbBanhMi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbBanhMiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbBanhMi);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
@@ -278,9 +284,19 @@ public class Manage_GUI extends javax.swing.JFrame {
 
         btUpdate.setBackground(new java.awt.Color(255, 204, 204));
         btUpdate.setText("Update");
+        btUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpdateActionPerformed(evt);
+            }
+        });
 
         btTotalMoney.setBackground(new java.awt.Color(204, 204, 255));
         btTotalMoney.setText("Total Money");
+        btTotalMoney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTotalMoneyActionPerformed(evt);
+            }
+        });
 
         btVote.setBackground(new java.awt.Color(204, 204, 255));
         btVote.setForeground(new java.awt.Color(0, 153, 153));
@@ -293,10 +309,20 @@ public class Manage_GUI extends javax.swing.JFrame {
 
         btFindById.setBackground(new java.awt.Color(255, 204, 153));
         btFindById.setText("Find By Id");
+        btFindById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFindByIdActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 102));
-        jButton1.setText("Exit");
+        btExit.setBackground(new java.awt.Color(255, 0, 0));
+        btExit.setForeground(new java.awt.Color(255, 255, 102));
+        btExit.setText("Exit");
+        btExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExitActionPerformed(evt);
+            }
+        });
 
         btDeleteByClick.setBackground(new java.awt.Color(255, 153, 153));
         btDeleteByClick.setText("Delete By Click");
@@ -339,13 +365,13 @@ public class Manage_GUI extends javax.swing.JFrame {
                             .addComponent(btPrintListByVote))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btDeleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -427,6 +453,18 @@ public class Manage_GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void printListByType(int i){
+        if (i==0){
+             for (BanhMi bm : lbm.listByType(0)){
+                add1RowInTable(bm);
+            }
+        } else {
+            for (BanhMi bm : lbm.listByType(1)){
+                add1RowInTable(bm);
+            }
+        }
+    }
+    
     private void cbBanhMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBanhMiActionPerformed
         // TODO add your handling code here:
         if (cbBanhMi.getSelectedIndex() == 0) {
@@ -438,15 +476,20 @@ public class Manage_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbBanhMiActionPerformed
 
-    private void deleteById(String id){
-        if (lbm.deleteById(id)){
+    private boolean deleteById(String id) {
+        if (lbm.deleteById(id)) {
             JOptionPane.showMessageDialog(null, "Delete Successful!");
+            return true;
         } else {
-            JOptionPane.showMessageDialog(null, "Delete Failm, Not Found Id!");
+            JOptionPane.showMessageDialog(null, "Delete Fail, Not Found This Id!");
+            int i = JOptionPane.showConfirmDialog(null, "Do you want to re-write?", "Notice", JOptionPane.YES_NO_OPTION);
+            if (JOptionPane.NO_OPTION == i) {
+                return true;
+            }
         }
+        return false;
     }
-    
-    
+
     private void btVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoteActionPerformed
         // TODO add your handling code here:
         if (cbBanhMi.getSelectedIndex() == 0) {
@@ -464,6 +507,13 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btPrintListByTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByTypeActionPerformed
         // TODO add your handling code here:
+        String choice=JOptionPane.showInputDialog("Which type do you want to choose? Thit/Cha");
+        deleteTable();
+        if (choice.equalsIgnoreCase("Thit")){
+            printListByType(0);
+        } else {
+            printListByType(1);
+        }
     }//GEN-LAST:event_btPrintListByTypeActionPerformed
 
     private void btPrintListByVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByVoteActionPerformed
@@ -471,30 +521,36 @@ public class Manage_GUI extends javax.swing.JFrame {
         String choice = JOptionPane.showInputDialog(null, "Do you want to print a list with more or less votes ?more/less", "Choice",
                 JOptionPane.DEFAULT_OPTION
         );
+        deleteTable();
         if (voteThit > voteCha) {
             if (choice.equalsIgnoreCase("more")) {
-                // print Thit
+                printListByType(0);
             } else {
-                //print Cha
+                printListByType(1);
+            }
+        } else if (voteThit<voteCha) 
+        {
+            if (choice.equalsIgnoreCase("more")) {
+                printListByType(1);
+            } else {
+                printListByType(0);
             }
         } else {
-            if (choice.equalsIgnoreCase("more")) {
-                // print Cha
-            } else {
-                //print Thit
-            }
+            JOptionPane.showMessageDialog(null, "The Number Of Vote 'Thit' equal 'Cha' ");
         }
     }//GEN-LAST:event_btPrintListByVoteActionPerformed
 
     private void btAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddNewActionPerformed
         // TODO add your handling code here:
-        if (cbBanhMi.getSelectedIndex()==0){
-            BanhMiThit bmt= new BanhMiThit(txtTmp.getText(), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+        if (cbBanhMi.getSelectedIndex() == 0) {
+            BanhMiThit bmt = new BanhMiThit(txtTmp.getText(), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+            lbm.addInList(bmt);
             add1RowInTable(bmt);
         } else {
-            BanhMiCha bmc= new BanhMiCha(Integer.parseInt(txtTmp.getText()), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+            BanhMiCha bmc = new BanhMiCha(Integer.parseInt(txtTmp.getText()), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+            lbm.addInList(bmc);
             add1RowInTable(bmc);
-        }       
+        }
     }//GEN-LAST:event_btAddNewActionPerformed
 
     private void btPrintListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListActionPerformed
@@ -507,8 +563,8 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteAllActionPerformed
         // TODO add your handling code here:
-        String s= JOptionPane.showInputDialog("Please, Enter 'Confirm' to delete all DataBase and Table");
-        if (s.equalsIgnoreCase("Confirm")){
+        String s = JOptionPane.showInputDialog("Please, Enter 'Confirm' to delete all DataBase and Table");
+        if (s.equalsIgnoreCase("Confirm")) {
             lbm.al.clear();
             deleteTable();
         }
@@ -516,16 +572,21 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btDeleteByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteByIdActionPerformed
         // TODO add your handling code here:
-        String id= JOptionPane.showInputDialog("Enter Id you want to delete");
-        deleteById(id);
+        while (true) {
+            String id = JOptionPane.showInputDialog("Enter Id you want to delete");
+            if (deleteById(id)) {
+                break;
+            }
+
+        }
         btPrintListActionPerformed(evt);
     }//GEN-LAST:event_btDeleteByIdActionPerformed
 
     private void btDeleteByClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteByClickActionPerformed
         // TODO add your handling code here:
-        int i= tbBanhMi.getSelectedRow();
-        if (i>-1){
-            String id= model.getValueAt(i, 0).toString();
+        int i = tbBanhMi.getSelectedRow();
+        if (i > -1) {
+            String id = model.getValueAt(i, 0).toString();
             deleteById(id);
         }
         btPrintListActionPerformed(evt);
@@ -533,9 +594,81 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btSortByPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPriceActionPerformed
         // TODO add your handling code here:
-        
-        
+        lbm.sortByPrice();
+        btPrintListActionPerformed(evt);
     }//GEN-LAST:event_btSortByPriceActionPerformed
+
+    private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
+        // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Notice", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.YES_OPTION == i) {
+            exit(0);
+        }
+    }//GEN-LAST:event_btExitActionPerformed
+
+    private void btTotalMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTotalMoneyActionPerformed
+        // TODO add your handling code here:
+        long sumThit = 0, sumCha = 0;
+        for (BanhMi bm : lbm.al) {
+            if (bm instanceof BanhMiThit) {
+                sumThit += bm.getPrice();
+            } else {
+                sumCha += bm.getPrice();
+            }
+        }
+        String type = JOptionPane.showInputDialog("Enter Type you want to sum(thit/cha/both):");
+        if (type.equalsIgnoreCase("Thit")) {
+            JOptionPane.showMessageDialog(null, sumThit + " VND");
+        } else if (type.equalsIgnoreCase("Cha")) {
+            JOptionPane.showMessageDialog(null, sumCha + "VND");
+        } else {
+            JOptionPane.showMessageDialog(null, (sumCha + sumThit) + " VND");
+        }
+    }//GEN-LAST:event_btTotalMoneyActionPerformed
+
+    private void btFindByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFindByIdActionPerformed
+        // TODO add your handling code here:
+        while (true) {
+            String id = JOptionPane.showInputDialog("Enter Id:");
+            if (lbm.findById(id) != null) {
+                deleteTable();
+                add1RowInTable(lbm.findById(id));
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Not Found This Id");
+                int i = JOptionPane.showConfirmDialog(null, "Do You Want to Re-Enter?", "Notice", JOptionPane.YES_NO_OPTION);
+                if (JOptionPane.NO_OPTION == i) {
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_btFindByIdActionPerformed
+
+    private void tbBanhMiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBanhMiMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int i = tbBanhMi.getSelectedRow();
+            txtId.setText( model.getValueAt(i, 0).toString());
+            txtBreadFilling.setText( model.getValueAt(i, 1).toString());
+            txtSize.setText( model.getValueAt(i, 2).toString());
+            if (model.getValueAt(i, 4) == "") {
+                txtTmp.setText( model.getValueAt(i, 3).toString());
+                cbBanhMi.setSelectedIndex(0);
+            } else {
+                txtTmp.setText( model.getValueAt(i, 4).toString());
+                cbBanhMi.setSelectedIndex(1);
+            }
+        }
+    }//GEN-LAST:event_tbBanhMiMouseClicked
+
+    private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
+        // TODO add your handling code here:
+        int i= tbBanhMi.getSelectedRow();
+        lbm.deleteById(model.getValueAt(i, 0).toString());
+        deleteTable();
+        btAddNewActionPerformed(evt);
+    }//GEN-LAST:event_btUpdateActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -577,6 +710,7 @@ public class Manage_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btDeleteAll;
     private javax.swing.JButton btDeleteByClick;
     private javax.swing.JButton btDeleteById;
+    private javax.swing.JButton btExit;
     private javax.swing.JButton btFindById;
     private javax.swing.JButton btPrintList;
     private javax.swing.JButton btPrintListByType;
@@ -586,7 +720,6 @@ public class Manage_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btUpdate;
     private javax.swing.JButton btVote;
     private javax.swing.JComboBox<String> cbBanhMi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
