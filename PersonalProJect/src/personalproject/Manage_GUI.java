@@ -37,7 +37,6 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void readFile(){
         lbm.readFile("input.txt");
-        JOptionPane.showMessageDialog(null, lbm.al.size());
         for (BanhMi bm : lbm.al) {
             add1RowInTable(bm);
         }
@@ -222,6 +221,11 @@ public class Manage_GUI extends javax.swing.JFrame {
 
         btAddNew.setBackground(new java.awt.Color(255, 153, 204));
         btAddNew.setText("Add New");
+        btAddNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddNewActionPerformed(evt);
+            }
+        });
 
         btSortByPrice.setBackground(new java.awt.Color(153, 255, 153));
         btSortByPrice.setText("Sort By Price");
@@ -438,6 +442,17 @@ public class Manage_GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btPrintListByVoteActionPerformed
+
+    private void btAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddNewActionPerformed
+        // TODO add your handling code here:
+        if (cbBanhMi.getSelectedIndex()==0){
+            BanhMiThit bmt= new BanhMiThit(txtTmp.getText(), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+            add1RowInTable(bmt);
+        } else {
+            BanhMiCha bmc= new BanhMiCha(Integer.parseInt(txtTmp.getText()), txtId.getText(), txtBreadFilling.getText(), Integer.parseInt(txtSize.getText()));
+            add1RowInTable(bmc);
+        }       
+    }//GEN-LAST:event_btAddNewActionPerformed
 
     /**
      * @param args the command line arguments

@@ -43,8 +43,5 @@ public abstract class BanhMi implements IBanhMi{
     }
 
     @Override
-    public abstract long getPrice(); 
-    
-    
-    
+    public abstract long getPrice();  
 }
