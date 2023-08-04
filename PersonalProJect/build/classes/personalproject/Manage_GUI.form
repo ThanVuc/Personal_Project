@@ -62,7 +62,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
@@ -348,61 +348,66 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btSortByPrice" max="32767" attributes="0"/>
-                      <Component id="btAddNew" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btSortByPrice" max="32767" attributes="0"/>
+                              <Component id="btAddNew" min="-2" pref="96" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btTotalMoney" max="32767" attributes="0"/>
+                              <Component id="btPrintList" min="-2" pref="96" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btUpdate" max="32767" attributes="0"/>
+                              <Component id="btDeleteAll" min="-2" pref="83" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btDeleteById" min="-2" max="-2" attributes="0"/>
+                              <Component id="btFindById" min="-2" pref="93" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btVote" max="32767" attributes="0"/>
+                              <Component id="btDeleteByClick" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btPrintListByType" max="32767" attributes="0"/>
+                              <Component id="btPrintListByVote" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jButton1" min="-2" pref="49" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btTotalMoney" max="32767" attributes="0"/>
-                      <Component id="btPrintList" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btUpdate" pref="83" max="32767" attributes="0"/>
-                      <Component id="DeleteAll" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btFindById" max="32767" attributes="0"/>
-                      <Component id="DeleteById" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="deleteByClick" max="32767" attributes="0"/>
-                      <Component id="btVote" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btPrintListByType" max="32767" attributes="0"/>
-                      <Component id="btPrintListByVote" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="DeleteById" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="deleteByClick" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="btPrintList" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="btAddNew" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="DeleteAll" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          </Group>
+                  <Component id="jButton1" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btDeleteByClick" max="32767" attributes="0"/>
+                      <Component id="btDeleteById" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="btPrintList" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="btAddNew" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="btDeleteAll" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btPrintListByType" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="btPrintListByType" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btTotalMoney" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
@@ -426,7 +431,7 @@
                           <Component id="btPrintListByVote" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -450,14 +455,20 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sort By Price"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSortByPriceActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="DeleteAll">
+        <Component class="javax.swing.JButton" name="btDeleteAll">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete All"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDeleteAllActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btPrintList">
           <Properties>
@@ -466,14 +477,20 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Print List"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPrintListActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="DeleteById">
+        <Component class="javax.swing.JButton" name="btDeleteById">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete By Id"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDeleteByIdActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btPrintListByType">
           <Properties>
@@ -496,14 +513,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPrintListByVoteActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="deleteByClick">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Delete By Click"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btUpdate">
           <Properties>
@@ -542,6 +551,28 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Find By Id"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Exit"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btDeleteByClick">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Delete By Click"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDeleteByClickActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
