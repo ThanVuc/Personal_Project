@@ -26,6 +26,6 @@ public class BanhMiThit extends BanhMi{
 
     @Override
     public long getPrice() {
-        return getSize()*10000;
+        return getSize()*10000-2000;
     }  
 }

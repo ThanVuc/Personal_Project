@@ -116,9 +116,11 @@ public class Manage_GUI extends javax.swing.JFrame {
         btTotalMoney = new javax.swing.JButton();
         btVote = new javax.swing.JButton();
         btFindById = new javax.swing.JButton();
-        btExit = new javax.swing.JButton();
         btDeleteByClick = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btWrite = new javax.swing.JButton();
+        btResetVote = new javax.swing.JButton();
+        btExit = new javax.swing.JButton();
+        btIntruction = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -333,15 +335,6 @@ public class Manage_GUI extends javax.swing.JFrame {
             }
         });
 
-        btExit.setBackground(new java.awt.Color(255, 0, 0));
-        btExit.setForeground(new java.awt.Color(255, 255, 102));
-        btExit.setText("Exit");
-        btExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExitActionPerformed(evt);
-            }
-        });
-
         btDeleteByClick.setBackground(new java.awt.Color(255, 153, 153));
         btDeleteByClick.setText("Delete By Click");
         btDeleteByClick.addActionListener(new java.awt.event.ActionListener() {
@@ -350,12 +343,37 @@ public class Manage_GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setForeground(new java.awt.Color(0, 255, 204));
-        jButton1.setText("Write File");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btWrite.setBackground(new java.awt.Color(102, 102, 255));
+        btWrite.setForeground(new java.awt.Color(0, 255, 204));
+        btWrite.setText("Write File");
+        btWrite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btWriteActionPerformed(evt);
+            }
+        });
+
+        btResetVote.setBackground(new java.awt.Color(255, 204, 204));
+        btResetVote.setText("Reset Vote");
+        btResetVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btResetVoteActionPerformed(evt);
+            }
+        });
+
+        btExit.setBackground(new java.awt.Color(255, 0, 0));
+        btExit.setForeground(new java.awt.Color(255, 255, 102));
+        btExit.setText("EXIT");
+        btExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExitActionPerformed(evt);
+            }
+        });
+
+        btIntruction.setBackground(new java.awt.Color(102, 255, 204));
+        btIntruction.setText("Intruction");
+        btIntruction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIntructionActionPerformed(evt);
             }
         });
 
@@ -369,7 +387,7 @@ public class Manage_GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btSortByPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btAddNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btTotalMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -377,10 +395,7 @@ public class Manage_GUI extends javax.swing.JFrame {
                         .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btDeleteAll, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
                         .addGap(105, 105, 105)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btDeleteById)
@@ -395,24 +410,32 @@ public class Manage_GUI extends javax.swing.JFrame {
                             .addComponent(btPrintListByVote))
                         .addGap(23, 23, 23))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(btIntruction, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(btWrite)
+                        .addGap(118, 118, 118)
+                        .addComponent(btResetVote)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(btExit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btWrite, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btResetVote, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btIntruction, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btDeleteByClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btDeleteById, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btPrintList, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btDeleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btDeleteByClick, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btPrintListByType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -423,12 +446,12 @@ public class Manage_GUI extends javax.swing.JFrame {
                             .addComponent(btUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btFindById, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btFindById, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btPrintListByVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btPrintListByVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btVote, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -446,16 +469,18 @@ public class Manage_GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(272, 272, 272))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -465,7 +490,7 @@ public class Manage_GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -473,7 +498,7 @@ public class Manage_GUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -538,15 +563,15 @@ public class Manage_GUI extends javax.swing.JFrame {
     private void btPrintListByTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByTypeActionPerformed
         // TODO add your handling code here:
         String choice = JOptionPane.showInputDialog("Which type do you want to choose? Thit/Cha");
-        try{
-        if (choice.equalsIgnoreCase("Thit")) {
-            deleteTable();
-            printListByType(0);
-        } else {
-            deleteTable();
-            printListByType(1);
-        }
-        } catch(NullPointerException ex){
+        try {
+            if (choice.equalsIgnoreCase("Thit")) {
+                deleteTable();
+                printListByType(0);
+            } else {
+                deleteTable();
+                printListByType(1);
+            }
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_btPrintListByTypeActionPerformed
 
@@ -624,11 +649,11 @@ public class Manage_GUI extends javax.swing.JFrame {
         int i = tbBanhMi.getSelectedRow();
         if (i > -1) {
             String id = model.getValueAt(i, 0).toString();
-            if (deleteById(id)){
+            if (deleteById(id)) {
                 btPrintListActionPerformed(evt);
                 JOptionPane.showMessageDialog(null, "Delete Successful!");
             }
-        } 
+        }
     }//GEN-LAST:event_btDeleteByClickActionPerformed
 
     private void btSortByPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPriceActionPerformed
@@ -655,13 +680,16 @@ public class Manage_GUI extends javax.swing.JFrame {
                 sumCha += bm.getPrice();
             }
         }
-        String type = JOptionPane.showInputDialog("Enter Type you want to sum(thit/cha/both):");
-        if (type.equalsIgnoreCase("Thit")) {
-            JOptionPane.showMessageDialog(null, sumThit + " VND");
-        } else if (type.equalsIgnoreCase("Cha")) {
-            JOptionPane.showMessageDialog(null, sumCha + "VND");
-        } else {
-            JOptionPane.showMessageDialog(null, (sumCha + sumThit) + " VND");
+        try {
+            String type = JOptionPane.showInputDialog("Enter Type you want to sum(thit/cha/both):");
+            if (type.equalsIgnoreCase("Thit")) {
+                JOptionPane.showMessageDialog(null, sumThit + " VND");
+            } else if (type.equalsIgnoreCase("Cha")) {
+                JOptionPane.showMessageDialog(null, sumCha + "VND");
+            } else {
+                JOptionPane.showMessageDialog(null, (sumCha + sumThit) + " VND");
+            }
+        } catch (NullPointerException e) {
         }
     }//GEN-LAST:event_btTotalMoneyActionPerformed
 
@@ -708,7 +736,7 @@ public class Manage_GUI extends javax.swing.JFrame {
         btAddNewActionPerformed(evt);
     }//GEN-LAST:event_btUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btWriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btWriteActionPerformed
         // TODO add your handling code here:
         String fileName = JOptionPane.showInputDialog("Enter File Name:");
         lbm.writeFile(fileName);
@@ -723,12 +751,33 @@ public class Manage_GUI extends javax.swing.JFrame {
                 System.out.println("IO Exception when open in Desktop!");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btWriteActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void btResetVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btResetVoteActionPerformed
+        // TODO add your handling code here:
+        voteCha = 0;
+        voteThit = 0;
+    }//GEN-LAST:event_btResetVoteActionPerformed
+
+    private void btIntructionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIntructionActionPerformed
+        // TODO add your handling code here:
+        Path path = Paths.get("instruction.txt");
+        File file = new File("D:\\Learn Back-End\\Java_OOP\\Personal_Project\\PersonalProJect\\" + path);
+        Desktop desktop = Desktop.getDesktop();
+        if (file.exists()) {
+            try {
+                desktop.open(file);
+
+            } catch (IOException ex) {
+                System.out.println("IO Exception when open in Desktop!");
+            }
+        }
+    }//GEN-LAST:event_btIntructionActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -739,16 +788,28 @@ public class Manage_GUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Manage_GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -767,15 +828,17 @@ public class Manage_GUI extends javax.swing.JFrame {
     private javax.swing.JButton btDeleteById;
     private javax.swing.JButton btExit;
     private javax.swing.JButton btFindById;
+    private javax.swing.JButton btIntruction;
     private javax.swing.JButton btPrintList;
     private javax.swing.JButton btPrintListByType;
     private javax.swing.JButton btPrintListByVote;
+    private javax.swing.JButton btResetVote;
     private javax.swing.JButton btSortByPrice;
     private javax.swing.JButton btTotalMoney;
     private javax.swing.JButton btUpdate;
     private javax.swing.JButton btVote;
+    private javax.swing.JButton btWrite;
     private javax.swing.JComboBox<String> cbBanhMi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

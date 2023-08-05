@@ -27,6 +27,6 @@ public class BanhMiCha extends BanhMi {
 
     @Override
     public long getPrice() {
-        return 8000*getSize();
+        return 9000*getSize()-1000*coupons;
     }
 }
