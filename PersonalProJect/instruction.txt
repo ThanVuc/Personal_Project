@@ -1,0 +1,83 @@
+1. Mục đích của chương trình:
+- Chương trình đơn giản đề quản lý số bánh mì được bán trong hai loại bánh
+mì, bánh mì thịt và bánh mì chả trong các chi nhánh đại lý bánh mì.
+
+- Bánh mì thịt và bánh mì chả cùng là bánh mì nên sẽ có các thuộc tính chung
+như id(mã số bánh mì), size, breadFilling(Nhân).
+
+- Tuy vậy vẫn có một số điểm khác biệt, đó là:
+  
+  + Bánh mì thịt có thuộc tính drink, khi mua bánh mì thịt thì sẽ được tặng
+1 ly thức uống nhỏ.
+  
+  + Bánh mì chả thì được áp dụng coupons(phiếu giảm giá), có được khi tham
+gia một số event đặt biệt.
+
+- Có 1 thuộc tính đặt biệt đó là getPrice(), yêu cầu lưu trữ lại số tiền bán
+được của mỗi ổ bánh mì
+  
+  + Đối với bánh mì thịt:
+	getPrice= size*10000-2000(Tiền nước)
+  + Đối với bánh mì chả:
+	getPrice=size*9000-1000*coupons
+
+2. Các chức năng của chương trình:
+  1/ Read File: Chương trình sẽ tự động đọc file input.txt để up data lên database và bảng
+
+  *Note: Đối với file input.txt cần phải nhập dữ liệu theo quy chuẩn:
+	type(1 or 2),id,breadFilling,Size,Drink/Coupons
+
+  2/ Add New: Nhập thuộc tính vào bảng thông tin, rồi bấm nút add new, thì thông
+tin đó sẽ được thêm vào database và bảng
+ 
+  3/ Print List: In ra danh sách đang có trong database vào bảng
+
+  4/ Delete All: Xóa tất cả dữ liệu trong database.*Warning
+
+  5/ Delete By Id: Nhập id vào thanh hộp thoại, và xóa bánh mì có id trùng trong
+database
+  
+  6/ Delete By Click: Click để select vào dòng dữ liệu trong bảng, xong bấm nút
+này để xóa dữ liệu của dòng đó khỏi database
+
+  7/ Print List By Type: Nhập vào loại bạn muốn in ra gồm có thit/cha, xong in
+ra danh sách theo loại
+
+  8/ Sort By Price: Sắp xếp tăng dần theo getPrice()
+
+  9/ Total Money: Nhập vào thông tin thit/cha/both để biết tổng tiền của tất cả
+bánh mì thịt hay bánh mì chả hoặc cả hai.
+
+  10/ Update: Double click vào dòng dữ liệu trong bảng mà ta muốn sửa đổi, sau
+đó các thuộc tính của dòng đó sẽ hiện lên trên bảng info sheet, sửa đổi thông
+tin như mong muốn và click update để thay đổi số liệu.
+
+  11/ Find By Id: Nhập vào id muốn tìm và bảng sẽ hiện ra bánh mì có số id đó
+
+  12/ Vote: click để vote cho loại bánh mì đang được select ở combobox.
+
+  13/ Reset Vote: Trả lại số lượng vote chả và thịt bằng không
+
+  15/ Print By Vote: In ra Danh sách có số lượng vote nhiều hơn hay ít hơn. Tùy
+vào lựa chọn bạn nhập vào. Có lựa chọn : more/less, nếu số vote bằng nhau thì
+để yên.
+
+  16/ Exit: Thoát chương trình
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

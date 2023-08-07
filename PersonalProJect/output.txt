@@ -1,0 +1,4 @@
+100	2	thit bo     		coca		20000
+101	3	cha lua     		3		24000
+102	1	thit heo     		pepsi		10000
+104	3	thit ga     		sprite		30000
