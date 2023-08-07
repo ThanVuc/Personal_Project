@@ -57,12 +57,12 @@ public class Manage_GUI extends javax.swing.JFrame {
     private void add1RowInTable(BanhMi bm) {
         if (bm instanceof BanhMiThit) {
             model.addRow(new Object[]{
-                bm.getId(), bm.getBreadFilling(), bm.getSize(), ((BanhMiThit) bm).getDrink(), "", bm.getPrice()
+                bm.getId(), bm.getBreadFilling(), bm.getSize(), ((BanhMiThit) bm).getDrink(), "", BanhMi.formatPrice(bm.getPrice())
             });
         } else {
             BanhMiCha bmc = (BanhMiCha) bm;
             model.addRow(new Object[]{
-                bmc.getId(), bmc.getBreadFilling(), bmc.getSize(), "", bmc.getCoupons(), bmc.getPrice()
+                bmc.getId(), bmc.getBreadFilling(), bmc.getSize(), "", bmc.getCoupons(), BanhMi.formatPrice(bmc.getPrice())
             });
         }
     }
@@ -121,7 +121,6 @@ public class Manage_GUI extends javax.swing.JFrame {
         btResetVote = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
         btIntruction = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -455,8 +454,6 @@ public class Manage_GUI extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("jLabel2");
-
         jLabel8.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 51, 51));
         jLabel8.setText("BANH MI MANAGE PROGRAM");
@@ -481,11 +478,6 @@ public class Manage_GUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(272, 272, 272))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,11 +491,6 @@ public class Manage_GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -567,9 +554,11 @@ public class Manage_GUI extends javax.swing.JFrame {
             if (choice.equalsIgnoreCase("Thit")) {
                 deleteTable();
                 printListByType(0);
-            } else {
+            } else if (choice.equalsIgnoreCase("cha")) {
                 deleteTable();
                 printListByType(1);
+            } else {
+                JOptionPane.showMessageDialog(null, "Illegal Type!");
             }
         } catch (NullPointerException ex) {
         }
@@ -577,24 +566,29 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btPrintListByVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintListByVoteActionPerformed
         // TODO add your handling code here:
-        String choice = JOptionPane.showInputDialog("Do you want to print a list with more or less votes ?more/less");
-        if (choice.equalsIgnoreCase("more")) {
-            deleteTable();
-            if (voteThit > voteCha) {
-                printListByType(0);
+        try {
+            String choice = JOptionPane.showInputDialog("Do you want to print a list with more or less votes ?more/less");
+            if (choice.equalsIgnoreCase("more")) {
+                deleteTable();
+                if (voteThit > voteCha) {
+                    printListByType(0);
+                } else {
+                    printListByType(1);
+                }
+            } else if (choice.equalsIgnoreCase("less")) {
+                deleteTable();
+                if (voteThit > voteCha) {
+                    printListByType(1);
+                } else {
+                    printListByType(0);
+                }
+            } else if ((voteCha == voteThit) && (choice != null)) {
+                JOptionPane.showMessageDialog(null, "Vote BanhMiCha Equal BanhMiThit");
             } else {
-                printListByType(1);
+                JOptionPane.showMessageDialog(null, "Illegal Info!");
             }
-        } else if (choice.equalsIgnoreCase("less")) {
-            deleteTable();
-            if (voteThit > voteCha) {
-                printListByType(1);
-            } else {
-                printListByType(0);
-            }
-        }
-        if ((voteCha == voteThit) && (choice != null)) {
-            JOptionPane.showMessageDialog(null, "Vote BanhMiCha Equal BanhMiThit");
+            
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_btPrintListByVoteActionPerformed
 
@@ -625,10 +619,13 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteAllActionPerformed
         // TODO add your handling code here:
-        String s = JOptionPane.showInputDialog("Please, Enter 'Confirm' to delete all DataBase and Table");
-        if (s.equalsIgnoreCase("Confirm")) {
-            lbm.al.clear();
-            deleteTable();
+        try {
+            String s = JOptionPane.showInputDialog("Please, Enter 'Confirm' to delete all DataBase and Table");
+            if (s.equalsIgnoreCase("Confirm")) {
+                lbm.al.clear();
+                deleteTable();
+            }
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_btDeleteAllActionPerformed
 
@@ -658,7 +655,12 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btSortByPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSortByPriceActionPerformed
         // TODO add your handling code here:
-        lbm.sortByPrice();
+        String str= JOptionPane.showInputDialog("Do you want Increasing or Decreasing? ics,dcs");
+        if (str.equalsIgnoreCase("ics") || str.equalsIgnoreCase("dcs")){
+            lbm.sortByPrice(str);
+        } else {
+            JOptionPane.showMessageDialog(null, "Illegal Input!");
+        }
         btPrintListActionPerformed(evt);
     }//GEN-LAST:event_btSortByPriceActionPerformed
 
@@ -683,11 +685,13 @@ public class Manage_GUI extends javax.swing.JFrame {
         try {
             String type = JOptionPane.showInputDialog("Enter Type you want to sum(thit/cha/both):");
             if (type.equalsIgnoreCase("Thit")) {
-                JOptionPane.showMessageDialog(null, sumThit + " VND");
+                JOptionPane.showMessageDialog(null, BanhMi.formatPrice(sumThit) + " VND");
             } else if (type.equalsIgnoreCase("Cha")) {
-                JOptionPane.showMessageDialog(null, sumCha + "VND");
+                JOptionPane.showMessageDialog(null, BanhMi.formatPrice(sumCha) + "VND");
+            } else if (type.equalsIgnoreCase("both")){
+                JOptionPane.showMessageDialog(null, BanhMi.formatPrice(sumCha + sumThit) + " VND");
             } else {
-                JOptionPane.showMessageDialog(null, (sumCha + sumThit) + " VND");
+                JOptionPane.showMessageDialog(null, "Illegal Input!");
             }
         } catch (NullPointerException e) {
         }
@@ -695,19 +699,22 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btFindByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFindByIdActionPerformed
         // TODO add your handling code here:
-        while (true) {
-            String id = JOptionPane.showInputDialog("Enter Id:");
-            if (lbm.findById(id) != null) {
-                deleteTable();
-                add1RowInTable(lbm.findById(id));
-                break;
-            } else {
-                JOptionPane.showMessageDialog(null, "Not Found This Id");
-                int i = JOptionPane.showConfirmDialog(null, "Do You Want to Re-Enter?", "Notice", JOptionPane.YES_NO_OPTION);
-                if (JOptionPane.NO_OPTION == i) {
+        try {
+            while (true) {
+                String id = JOptionPane.showInputDialog("Enter Id:");
+                if (lbm.findById(id) != null) {
+                    deleteTable();
+                    add1RowInTable(lbm.findById(id));
                     break;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not Found This Id");
+                    int i = JOptionPane.showConfirmDialog(null, "Do You Want to Re-Enter?", "Notice", JOptionPane.YES_NO_OPTION);
+                    if (JOptionPane.NO_OPTION == i) {
+                        break;
+                    }
                 }
             }
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_btFindByIdActionPerformed
 
@@ -738,18 +745,21 @@ public class Manage_GUI extends javax.swing.JFrame {
 
     private void btWriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btWriteActionPerformed
         // TODO add your handling code here:
-        String fileName = JOptionPane.showInputDialog("Enter File Name:");
-        lbm.writeFile(fileName);
-        Path path = Paths.get(fileName);
-        File file = new File("D:\\Learn Back-End\\Java_OOP\\Personal_Project\\PersonalProJect\\" + path);
-        Desktop desktop = Desktop.getDesktop();
-        if (file.exists()) {
-            try {
-                desktop.open(file);
+        try {
+            String fileName = JOptionPane.showInputDialog("Enter File Name:");
+            lbm.writeFile(fileName);
+            Path path = Paths.get(fileName);
+            File file = new File("D:\\Learn Back-End\\Java_OOP\\Personal_Project\\PersonalProJect\\" + path);
+            Desktop desktop = Desktop.getDesktop();
+            if (file.exists()) {
+                try {
+                    desktop.open(file);
 
-            } catch (IOException ex) {
-                System.out.println("IO Exception when open in Desktop!");
+                } catch (IOException ex) {
+                    System.out.println("IO Exception when open in Desktop!");
+                }
             }
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_btWriteActionPerformed
 
@@ -774,10 +784,10 @@ public class Manage_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btIntructionActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -789,27 +799,23 @@ public static void main(String args[]) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class  
+            java.util.logging.Logger.getLogger(Manage_GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Manage_GUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Manage_GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -840,7 +846,6 @@ public static void main(String args[]) {
     private javax.swing.JButton btWrite;
     private javax.swing.JComboBox<String> cbBanhMi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

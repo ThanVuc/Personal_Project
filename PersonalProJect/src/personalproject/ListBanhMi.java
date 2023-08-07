@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,57 +62,63 @@ public class ListBanhMi {
             System.out.println("Write File IO Exception!");
         }
     }
-    
-    public boolean deleteById(String id){
+
+    public boolean deleteById(String id) {
         for (BanhMi bm : al) {
-            if (id.equalsIgnoreCase(bm.getId())){
+            if (id.equalsIgnoreCase(bm.getId())) {
                 al.remove(bm);
-                return true;           
+                return true;
             }
         }
         return false;
     }
-    
-    public void sortByPrice(){
-        int i,j;
+
+    public void sortByPrice(String str) {
+        int i, j;
         BanhMi key;
-        for(i=1; i<al.size(); i++){
-            key=al.get(i);
-            j=i-1;
-            while ((j>=0) && (al.get(j).getPrice()>key.getPrice())){
-                al.set(j+1, al.get(j));
-                j-=1;
+        for (i = 1; i < al.size(); i++) {
+            key = al.get(i);
+            j = i - 1;
+            if (str.equalsIgnoreCase("ics")) {
+                while ((j >= 0) && (al.get(j).getPrice() > key.getPrice())) {
+                    al.set(j + 1, al.get(j));
+                    j -= 1;
+                }
+            } else {
+                while ((j >= 0) && (al.get(j).getPrice() < key.getPrice())) {
+                    al.set(j + 1, al.get(j));
+                    j -= 1;
+                }
             }
-            al.set(j+1, key);
+            al.set(j + 1, key);
         }
     }
-    
-    public BanhMi findById(String id){
+
+    public BanhMi findById(String id) {
         for (BanhMi banhMi : al) {
-            if (id.equalsIgnoreCase(banhMi.getId())){
+            if (id.equalsIgnoreCase(banhMi.getId())) {
                 return banhMi;
             }
         }
         return null;
     }
-    
-    public ArrayList<BanhMi> listByType(int i){
-        ArrayList<BanhMi> tmp= new ArrayList<>();
-        if (i==0){
+
+    public ArrayList<BanhMi> listByType(int i) {
+        ArrayList<BanhMi> tmp = new ArrayList<>();
+        if (i == 0) {
             for (BanhMi banhMi : al) {
-                if (banhMi instanceof BanhMiThit){
+                if (banhMi instanceof BanhMiThit) {
                     tmp.add(banhMi);
                 }
             }
             return tmp;
         } else {
-            for (BanhMi banhMi :  al){
-                if (banhMi instanceof BanhMiCha){
+            for (BanhMi banhMi : al) {
+                if (banhMi instanceof BanhMiCha) {
                     tmp.add(banhMi);
                 }
             }
             return tmp;
         }
     }
-
 }

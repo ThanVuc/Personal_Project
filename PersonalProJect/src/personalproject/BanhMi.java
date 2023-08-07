@@ -1,5 +1,7 @@
 package personalproject;
 
+import java.text.DecimalFormat;
+
 public abstract class BanhMi implements IBanhMi{
     private String id, breadFilling;
     private int size;
@@ -44,4 +46,8 @@ public abstract class BanhMi implements IBanhMi{
 
     @Override
     public abstract long getPrice();  
+    static public String formatPrice(long price){
+        DecimalFormat df= new DecimalFormat("###,###.0");
+        return df.format(price);
+    }
 }
